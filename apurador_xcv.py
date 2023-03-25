@@ -35,7 +35,7 @@ for i in range(len(df_pilotos_ids)):
     #   Montar a apuração com os voos por piloto, na estrutura da planilha.
     #               'PILOTO':piloto ,
     #               'PARAPENTE': df_pilotos_ids.loc[i].at['Vela'],
-    #               'Distancia OLC KM' : df_voos_data.head(5).sum().at['kmOLC'],
+    #               'Distancia OLC KM' : df_voos_data.head(5).sum().at['kmOLC'],.
     #               'Voo 1':0,
     #               'Voo 2':1,
     #               'Voo 3':2,
