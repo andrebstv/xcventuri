@@ -8,7 +8,8 @@ conn = sqlite3.connect('base_de_dados.db')
 cursor = conn.cursor()
 
 # Define a estrutura da tabela
-cursor.execute('''CREATE TABLE IF NOT EXISTS rampas_validas (
+cursor.execute('''CREATE TABLE rampas_validas (
+                    Id INTEGER,
                     nome TEXT PRIMARY KEY,
                     latitude REAL,
                     longitude REAL
@@ -34,7 +35,7 @@ conn.execute('''CREATE TABLE IF NOT EXISTS tabela_voos
 conn.commit()
 
 # Lê o arquivo CSV e cria um DataFrame com os dados
-df = pd.read_csv('Rampas/Rampas_Filtradas.csv', sep=';')
+df = pd.read_csv('Rampas/rampas_validas.csv', sep=';')
 
 # Insere os dados do DataFrame na tabela SQLite
 df.to_sql('rampas_validas', conn, if_exists='replace', index=False)
