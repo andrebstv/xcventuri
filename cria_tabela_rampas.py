@@ -8,7 +8,7 @@ conn = sqlite3.connect('base_de_dados.db')
 cursor = conn.cursor()
 
 # Define a estrutura da tabela
-cursor.execute('''CREATE TABLE rampas_validas (
+cursor.execute('''CREATE TABLE IF NOT EXISTS rampas_validas (
                     Id INTEGER,
                     nome TEXT PRIMARY KEY,
                     latitude REAL,
@@ -29,7 +29,8 @@ conn.execute('''CREATE TABLE IF NOT EXISTS tabela_voos
               Vela TEXT NOT NULL,
               Data_Coleta TEXT NOT NULL,
               Voo_data_valido BOOLEAN NOT NULL,
-              Voo_rampa_valida BOOLEAN NOT NULL);''')
+              Voo_rampa_valida BOOLEAN NOT NULL,
+              Espaco_aereo BOOLEAN NOT NULL);''')
 
 # Salva as alterações no banco de dados
 conn.commit()

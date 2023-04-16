@@ -8,6 +8,8 @@ from unidecode import unidecode
 from unicodedata import normalize
 import codecs
 
+#Funcao de geracao de apuracao.
+
 
 #Fazer a lista de pilotos e links e interar.
 
@@ -41,13 +43,23 @@ for i in range(len(df_pilotos_ids)):
     lista_duracao = re.findall("[\s]+(\d:\d\d)[\s]+<\/td>[\s]+<td class=\"distance\">",site_limpo)
     lista_pontuacaoOLC = [eval(x) for x in re.findall("<td class=\"OLCScore\" nowrap=\"\">[\r\n ]+(\d*\.?\d+\.\d+)",site_limpo)]
     lista_local_voo = re.findall("takeoffTip\.hide\(\)\">[\r\n ]+([A-Z][a-zA-Z ]+)",site_limpo)
+    lista_espaco_aereo = re.findall(r'<([a-zA-Z0-9\s]+)align="left" valign="top">\n\s+<div class="smallInfo">',site_limpo)
+    #Crio a lista booleana de violações de espaço aereo.
+    violacoes_espaco_aereo = []
+    for string in lista_espaco_aereo:
+        if "FF0000" in string:
+            violacoes_espaco_aereo.append(True)
+        else:
+            violacoes_espaco_aereo.append(False)
+    
     #Monta o dataframe
     df_voos_data = pd.DataFrame(list(zip(lista_id_voo,
                                          lista_data, 
                                          lista_kmOLC_voo,
                                          lista_pontuacaoOLC,
                                          lista_local_voo,
-                                         lista_duracao)),columns = ['ID_voo','Data', 'kmOLC','Pontuacao_OLC','local_voo','duracao'])
+                                         lista_duracao,
+                                         violacoes_espaco_aereo)),columns = ['ID_voo','Data', 'kmOLC','Pontuacao_OLC','local_voo','duracao','Espaco_aereo'])
     #Completa as colunas extras
     df_voos_data['Piloto'] = piloto
     df_voos_data['Categoria'] = categoria
@@ -90,55 +102,70 @@ voos_validos.reset_index(drop=True)
 # Aqui insere-se os voos de cada piloto, que sejam inéditos, no banco de dados.
 for index, row in voos_validos.iterrows():
     query = f'''
-    INSERT OR IGNORE INTO tabela_voos (ID_voo, Data, kmOLC, Pontuacao_OLC, local_voo, duracao, Piloto, Categoria, Vela, Data_Coleta, Voo_data_valido, Voo_rampa_valida)
+    INSERT OR IGNORE INTO tabela_voos (ID_voo, Data, kmOLC, Pontuacao_OLC, local_voo, duracao, Piloto, Categoria, Vela, Data_Coleta, Voo_data_valido, Voo_rampa_valida, Espaco_aereo)
     VALUES ({row['ID_voo']}, '{row['Data']}', {row['kmOLC']}, {row['Pontuacao_OLC']}, '{row['local_voo']}', '{row['duracao']}', 
-    '{row['Piloto']}', '{row['Categoria']}', '{row['Vela']}', '{row['Data_Coleta']}', {row['Voo_data_valido']}, {row['Voo_rampa_valida']})
+    '{row['Piloto']}', '{row['Categoria']}', '{row['Vela']}', '{row['Data_Coleta']}', {row['Voo_data_valido']}, {row['Voo_rampa_valida']},{row['Espaco_aereo']})
     '''
     conn.execute(query)
 conn.commit()
 
-# Consulta SQL que seleciona os seis maiores voos do piloto especificado
-for j in range(len(df_pilotos_ids)):
-    nome_piloto = df_pilotos_ids.loc[j].at['Nome']
+def apura(categoria):
+    # Consulta SQL que seleciona os seis maiores voos do piloto especificado
+    global df_apuracao #acesso global a variavel
+    df_apuracao.drop(df_apuracao.index, inplace=True) #zerando a variavel.
     
-    query = f'''
-    SELECT *
-    FROM (
-        SELECT *, ROW_NUMBER() OVER (ORDER BY Pontuacao_OLC DESC) AS row_num
-        FROM tabela_voos
-        WHERE Piloto = '{nome_piloto}'
-        AND Voo_rampa_valida = true AND Voo_data_valido = true 
-    ) t
-    WHERE row_num <= 6
-    '''
-    # Carregar os resultados da consulta em um dataframe para melhor manipulação.
-    df_do_banco = pd.read_sql_query(query, conn)
-    # Agora transfere para o formato da apuração.
-    index_da_vez = len(df_apuracao)
-    df_apuracao.loc[index_da_vez, 'PILOTO'] = df_pilotos_ids.loc[j].at['Nome']
-    df_apuracao.loc[index_da_vez, 'PARAPENTE'] = df_pilotos_ids.loc[j].at['Vela']
-    df_apuracao.loc[index_da_vez, 'Distancia OLC KM'] = round(df_do_banco.head(6).sum().at['Pontuacao_OLC'],1)
-        #coloca os demais voos na lista. Sempre checando se ultrapassou.
-    for i in range(6):
-        dfx = df_do_banco.head(6)
-        lenx = len(df_do_banco.head(6))
-        if (i < len(df_do_banco.head(6))):
-            df_apuracao.iloc[index_da_vez,i+3] = df_do_banco.loc[i].at['kmOLC']
-        else:
-            df_apuracao.iloc[index_da_vez,i+3] = 0
-    #   Montar a apuração com os voos por piloto, na estrutura da planilha.
-    #               'PILOTO':piloto ,
-    #               'PARAPENTE': df_pilotos_ids.loc[i].at['Vela'],
-    #               'Distancia OLC KM' : df_voos_data.head(5).sum().at['kmOLC'],.
-    #               'Voo 1':0,
-    #               'Voo 2':1,
-    #               'Voo 3':2,
-    #               'Voo 4':3,
-    #               'Voo 5':4,
-    #               'Voo 6':5}
-df_apuracao = df_apuracao.sort_values(by=['Distancia OLC KM'], ascending=False, ignore_index=True)
-df_apuracao.to_csv('apuracao.csv', sep=';') 
+    for j in range(len(df_pilotos_ids)):
+        nome_piloto = df_pilotos_ids.loc[j].at['Nome']
+        if df_pilotos_ids.loc[j].at['Categoria'] == categoria:
+            
+            query = f'''
+            SELECT *
+            FROM (
+                SELECT *, ROW_NUMBER() OVER (ORDER BY Pontuacao_OLC DESC) AS row_num
+                FROM tabela_voos
+                WHERE Piloto = '{nome_piloto}'
+                AND Voo_rampa_valida = true AND Voo_data_valido = true 
+                AND Categoria = '{categoria}'
+            ) t
+            WHERE row_num <= 6
+            '''
+            # Carregar os resultados da consulta em um dataframe para melhor manipulação.
+            df_do_banco = pd.read_sql_query(query, conn)
+            # Agora transfere para o formato da apuração.
+            index_da_vez = len(df_apuracao)
+            df_apuracao.loc[index_da_vez, 'PILOTO'] = df_pilotos_ids.loc[j].at['Nome']
+            df_apuracao.loc[index_da_vez, 'PARAPENTE'] = df_pilotos_ids.loc[j].at['Vela']
+            df_apuracao.loc[index_da_vez, 'Pontuacao OLC'] = round(df_do_banco.head(6).sum().at['Pontuacao_OLC'],1)
+                #coloca os demais voos na lista. Sempre checando se ultrapassou.
+            for i in range(6):
+                dfx = df_do_banco.head(6)
+                lenx = len(df_do_banco.head(6))
+                if (i < len(df_do_banco.head(6))):
+                    df_apuracao.iloc[index_da_vez,i+3] = df_do_banco.loc[i].at['Pontuacao_OLC']
+                else:
+                    df_apuracao.iloc[index_da_vez,i+3] = 0
+            #   Montar a apuração com os voos por piloto, na estrutura da planilha.
+            #               'PILOTO':piloto ,
+            #               'PARAPENTE': df_pilotos_ids.loc[i].at['Vela'],
+            #               'Pontuacao OLC' : df_voos_data.head(5).sum().at['Pontuacao_OLC'],.
+            #               'Voo 1':0,
+            #               'Voo 2':1,
+            #               'Voo 3':2,
+            #               'Voo 4':3,
+            #               'Voo 5':4,
+            #               'Voo 6':5}
+            df_apuracao = df_apuracao.sort_values(by=['Pontuacao OLC'], ascending=False, ignore_index=True)
+
+apura('Open')
+df_apuracao.to_csv('apSerial.csv', sep=';') 
+apura('Sport Lite')
+df_apuracao.to_csv('apLite.csv', sep=';')
+apura('Sport')
+df_apuracao.to_csv('apSport.csv', sep=';')
+
 voos_validos.to_csv('voos_validos.csv', sep=';')
 conn.close()
 print('FIM')
+
+
 
