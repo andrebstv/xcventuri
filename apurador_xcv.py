@@ -112,7 +112,7 @@ conn.commit()
 def apura(categoria):
     # Consulta SQL que seleciona os seis maiores voos do piloto especificado
     global df_apuracao #acesso global a variavel
-    df_apuracao.drop(df_apuracao.index, inplace=True) #zerando a variavel.
+    # df_apuracao.drop(df_apuracao.index, inplace=True) #Certo seria zerar, mas como queremos que ela seja cumulativa nas categorias vamos deixar.
     
     for j in range(len(df_pilotos_ids)):
         nome_piloto = df_pilotos_ids.loc[j].at['Nome']
@@ -154,14 +154,27 @@ def apura(categoria):
             #               'Voo 4':3,
             #               'Voo 5':4,
             #               'Voo 6':5}
-            df_apuracao = df_apuracao.sort_values(by=['Pontuacao OLC'], ascending=False, ignore_index=True)
+    df_apuracao = df_apuracao.sort_values(by=['Pontuacao OLC'], ascending=False, ignore_index=True)
+    # df_apuracao = df_apuracao.reset_index()
+    #df_apuracao.index = df_apuracao.index + 1
+
+#Deve ser apurado nessa ordem para ir adicionando cada um na listagem.
+apura('Sport Lite')
+df_impressao = df_apuracao.copy()
+df_impressao.index += 1
+df_impressao.to_csv('apLite.csv', sep=';', index_label='#')
+df_impressao.drop(df_impressao.index, inplace=True)
+
+apura('Sport')
+df_impressao = df_apuracao.copy()
+df_impressao.index += 1
+df_impressao.to_csv('apSport.csv', sep=';', index_label='#')
+df_impressao.drop(df_impressao.index, inplace=True)
 
 apura('Open')
-df_apuracao.to_csv('apSerial.csv', sep=';') 
-apura('Sport Lite')
-df_apuracao.to_csv('apLite.csv', sep=';')
-apura('Sport')
-df_apuracao.to_csv('apSport.csv', sep=';')
+df_impressao = df_apuracao.copy()
+df_impressao.index += 1
+df_impressao.to_csv('apSerial.csv', sep=';', index_label='#')
 
 voos_validos.to_csv('voos_validos.csv', sep=';')
 conn.close()

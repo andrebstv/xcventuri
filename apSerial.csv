@@ -1,21 +1,47 @@
-;PILOTO;PARAPENTE;Pontuacao OLC;Voo 1;Voo 2;Voo 3;Voo 4;Voo 5;Voo 6
-0;Manoel Junior ;Ozone - Enzo 3;965.9;184.3;180.67;158.68;156.7;146.65;138.89
-1;Thiago Werner;Flow - Spectra 2;930.8;202.64;193.4;165.06;132.68;124.67;112.37
-2;Michel Pinheiro;Flow - Spectra 2;868.6;200.81;194.43;132.75;117.05;114.36;109.25
-3;Lucas Porto ;Ozone - Zeolite GT;858.0;183.85;143.1;141.57;141.03;125.03;123.44
-4;Vinicius Bianchi ;Ozone - Zeno 2;849.3;184.34;141.96;138.52;134.29;127.4;122.77
-5;Silas Moreira ;Ozone - Zeno;790.4;144.74;143.44;139.67;121.65;121.39;119.47
-6;Eumacio Versiani;Flow - Xc Racer;721.5;129.06;121.05;119.16;119.1;117.17;115.99
-7;Rony Carminati ;Ozone - Zeno;679.0;174.66;122.49;102.93;98.9;90.27;89.7
-8;Jose Geronimo;Ozone - Enzo 3;636.9;133.41;121.09;109.28;95.9;89.52;87.66
-9;Joao Lazarone ;Ozone - Enzo 3;600.8;139.29;103.23;101.68;100.13;86.73;69.73
-10;Leandro Patricio ;Ozone - Enzo 3;524.6;120.64;103.87;102.19;97.86;69.85;30.15
-11;Adelso Boecker;Flow - Xc Racer;487.4;133.71;107.23;103.72;77.66;33.09;32.01
-12;Sebah Freitas;Flow - Spectra 2;319.6;202.8;116.8;0;0;0;0
-13;Ruy Coelho ;Niviuk - Evox;284.5;132.95;111.69;17.73;11.88;10.24;0
-14;Paulim Gogo;Ozone - Zeno;166.0;70.69;55.41;39.9;0;0;0
-15;Walace de Oliveira;Gin - Leopard;144.4;53.62;52.03;21.82;16.95;0;0
-16;Eucleber Ferreira;Sol - LT 1;122.9;87.13;35.74;0;0;0;0
-17;Leomar Guilherme ;Sol - LT 1;92.0;30.09;21.94;12.99;12.03;7.55;7.45
-18;Lucio Parrela;Gin - Leopard;0;0;0;0;0;0;0
-19;Marlos Janutt;Flow - Xc Racer;0;0;0;0;0;0;0
+#;PILOTO;PARAPENTE;Pontuacao OLC;Voo 1;Voo 2;Voo 3;Voo 4;Voo 5;Voo 6
+1;Manoel Junior ;Ozone - Enzo 3;965.9;184.3;180.67;158.68;156.7;146.65;138.89
+2;Thiago Werner;Flow - Spectra 2;930.8;202.64;193.4;165.06;132.68;124.67;112.37
+3;Michel Pinheiro;Flow - Spectra 2;868.6;200.81;194.43;132.75;117.05;114.36;109.25
+4;Lucas Porto ;Ozone - Zeolite GT;858.0;183.85;143.1;141.57;141.03;125.03;123.44
+5;Vinicius Bianchi ;Ozone - Zeno 2;849.3;184.34;141.96;138.52;134.29;127.4;122.77
+6;Silas Moreira ;Ozone - Zeno;790.4;144.74;143.44;139.67;121.65;121.39;119.47
+7;Eumacio Versiani;Flow - Xc Racer;721.5;129.06;121.05;119.16;119.1;117.17;115.99
+8;Rony Carminati ;Ozone - Zeno;679.0;174.66;122.49;102.93;98.9;90.27;89.7
+9;Thiago Azevedo;BGD - Cure 2;677.2;132.01;123.54;119.46;104.67;102.78;94.78
+10;Jose Geronimo;Ozone - Enzo 3;636.9;133.41;121.09;109.28;95.9;89.52;87.66
+11;Rubens Schunck;Advance - Sigma 11;610.3;147.64;124.24;121.38;102.22;58.42;56.43
+12;Joao Lazarone ;Ozone - Enzo 3;600.8;139.29;103.23;101.68;100.13;86.73;69.73
+13;Leandro Patricio ;Ozone - Enzo 3;524.6;120.64;103.87;102.19;97.86;69.85;30.15
+14;Vinicius Barbarioli;Triple Seven - Queen 2;507.0;146.56;122.43;92.85;80.47;35.19;29.5
+15;Adelso Boecker;Flow - Xc Racer;487.4;133.71;107.23;103.72;77.66;33.09;32.01
+16;Bernardo Margotto;Advance - Sigma 10;470.8;123.0;103.34;101.5;94.21;48.75;0
+17;Filipe Perini ;Ozone - Delta 3 ;421.8;124.36;103.24;92.8;53.48;28.42;19.53
+18;Ney de Oliveira;Ozone - Rush 5;364.0;101.44;82.14;62.22;41.81;41.24;35.16
+19;Daniel Bernardino;Sol - Sycross 2;360.4;116.4;86.69;79.19;61.12;9.82;7.2
+20;Bruno Mazzei;Phi - Allegro Light;332.2;100.69;55.4;52.81;49.98;37.17;36.1
+21;Leandro Schmidt;Ozone - Delta 3 ;321.7;102.64;78.47;65.23;49.04;18.52;7.79
+22;Vantuil Mataveli;Ozone - Delta 4;320.0;124.67;104.09;91.24;0;0;0
+23;Sebah Freitas;Flow - Spectra 2;319.6;202.8;116.8;0;0;0;0
+24;Andre Stavrakas;Flow - Fusion;295.3;125.41;54.76;40.48;36.14;20.82;17.68
+25;Ruy Coelho ;Niviuk - Evox;284.5;132.95;111.69;17.73;11.88;10.24;0
+26;Marjo Lemos;Sol - LT 2;266.3;105.91;73.27;55.38;31.72;0;0
+27;Francisco Reis;Niviuk - Ikuma;259.2;72.11;67.56;47.42;26.11;25.97;20.07
+28;Mateus Haase;Niviuk - Ikuma;221.3;72.53;59.71;25.27;23.2;22.18;18.37
+29;Paulim Gogo;Ozone - Zeno;166.0;70.69;55.41;39.9;0;0;0
+30;Higor Penitenti ;Ozone - Rush 5;161.5;68.96;22.16;19.85;18.9;16.86;14.79
+31;Walace de Oliveira;Gin - Leopard;144.4;53.62;52.03;21.82;16.95;0;0
+32;Helio Lima;Skywalk - Chili 4;143.4;58.71;40.87;20.07;12.39;11.36;0
+33;Valentin Tesch ;Sol - Sycross 2;129.2;31.62;29.37;22.34;16.26;15.41;14.23
+34;Eucleber Ferreira;Sol - LT 1;122.9;87.13;35.74;0;0;0;0
+35;Aloisio de Almeida ;Sol - Sycross;109.5;109.5;0;0;0;0;0
+36;Luiz Furbino;Sol - Sycross 2;94.8;18.78;17.2;15.37;15.24;14.1;14.09
+37;Leomar Guilherme ;Sol - LT 1;92.0;30.09;21.94;12.99;12.03;7.55;7.45
+38;Claudinei Inocente ;Sol - Sycross 2;63.5;17.34;14.91;10.26;7.33;6.89;6.77
+39;Daniel Trevezani ;Gin - Bonanza 2 ;43.1;43.1;0;0;0;0;0
+40;Helicei Freitas;Up - Ascent 2;41.0;14.25;11.32;8.04;2.64;2.49;2.3
+41;Jefferson Felicio ;BGD - Base 2;34.7;8.95;8.69;8.44;6.17;2.44;0
+42;Hemerson Souza;Swing - Nyos 2;19.2;9.91;9.24;0;0;0;0
+43;Luiz Felipe Peruchi;Sol - Atmus 2;15.5;6.48;5.24;3.74;0;0;0
+44;Petterson Mareto;Ozone - Delta 2;0;0;0;0;0;0;0
+45;Lucio Parrela;Gin - Leopard;0;0;0;0;0;0;0
+46;Marlos Janutt;Flow - Xc Racer;0;0;0;0;0;0;0
