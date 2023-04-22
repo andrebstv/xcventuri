@@ -1,7 +1,6 @@
 Lista participantes XcVenturi.xlsx
 Liga XC Venturi 2022 - 7º Edição - Planilha de C.xlsx
 GFG.csv
-formato_da_apuracao.csv
 demo.txt
 apuracao.csv
 ~$Liga XC Venturi 2022 - 7º Edição - Planilha de C.xlsx
@@ -25,3 +24,5 @@ build/apurador_xcv/localpycs/pyimod04_pywin32.pyc
 build/apurador_xcv/localpycs/struct.pyc
 dist/apurador_xcv.exe
 apurador_xcv.spec
+dist/apurador_xcv
+requirements.old
