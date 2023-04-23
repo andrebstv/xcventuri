@@ -178,6 +178,11 @@ df_impressao.to_csv('apSerial.csv', sep=';', index_label='#')
 
 voos_validos.to_csv('voos_validos.csv', sep=';')
 conn.close()
+
+#Cria o arquivo texto_data.txt que é utilizado no site como indicador da ultima apuração.
+with open("texto_data.txt", "w") as arquivo:
+    arquivo.write('Apurado em: ' + dt.now().strftime("%d/%m/%Y %H:%M:%S"))
+    
 print('FIM')
 
 

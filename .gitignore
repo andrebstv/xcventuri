@@ -26,3 +26,4 @@ dist/apurador_xcv.exe
 apurador_xcv.spec
 dist/apurador_xcv
 requirements.old
+venv
