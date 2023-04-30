@@ -124,7 +124,7 @@ def apura(categoria):
                 SELECT *, ROW_NUMBER() OVER (ORDER BY Pontuacao_OLC DESC) AS row_num
                 FROM tabela_voos
                 WHERE Piloto = '{nome_piloto}'
-                AND Voo_rampa_valida = true AND Voo_data_valido = true 
+                AND Voo_rampa_valida = true AND Voo_data_valido = true AND Espaco_aereo = false
                 AND Categoria = '{categoria}'
             ) t
             WHERE row_num <= 6
