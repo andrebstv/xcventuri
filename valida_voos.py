@@ -1,7 +1,6 @@
 import sqlite3
 import pandas as pd
 import requests
-import chardet
 import re
 # 686430 Com violacao, 682799 sem
 
