@@ -126,6 +126,7 @@ def apura(categoria):
                 WHERE Piloto = '{nome_piloto}'
                 AND Voo_rampa_valida = true AND Voo_data_valido = true AND Espaco_aereo = false
                 AND Categoria = '{categoria}'
+                OR manual = true
             ) t
             WHERE row_num <= 6
             '''

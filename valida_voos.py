@@ -16,6 +16,7 @@ sql = "SELECT * FROM tabela_voos WHERE Voo_data_valido = 1 AND Voo_rampa_valida 
 
 # Transforma o resultado da consulta em um dataframe
 df_voos_validos = pd.read_sql_query(sql, conn)
+# Cria uma string de update para o banco de dados.
 for index, row in df_voos_validos.iterrows():
     url = 'http://xcbrasil.com.br/flight/' + str(df_voos_validos.at[index, 'ID_voo'])
     response = requests.get(url)
@@ -25,8 +26,14 @@ for index, row in df_voos_validos.iterrows():
     else:
         df_voos_validos.at[index, 'Espaco_aereo'] = False
 
+#Cria-se uma lista contendo todos os IDs de voo do dataframe que tiveram violação do espaco aereo.
+#Na sequencia monta a string de update e seta o banco.
+lista = df_voos_validos.loc[df_voos_validos['Espaco_aereo'] == True, 'ID_voo'].tolist()
+string_consulta = ', '.join(map(str, lista))
+query_update_banco = f''' UPDATE tabela_voos SET Espaco_aereo = True WHERE ID_voo IN ({string_consulta})''' 
 # Salva as modificações no banco de dados
-df_voos_validos.to_sql('tabela_voos', conn, if_exists='replace', index=False)
+conn.execute(query_update_banco)
+conn.commit()
 
 # Fecha a conexão com o banco de dados
 conn.close()
