@@ -1,27 +1,28 @@
 #;PILOTO;PARAPENTE;Pontuacao OLC;Voo 1;Voo 2;Voo 3;Voo 4;Voo 5;Voo 6
-1;Thiago Azevedo;BGD - Cure 2;677.2;132.01;123.54;119.46;104.67;102.78;94.78
-2;Rubens Schunck;Advance - Sigma 11;610.3;147.64;124.24;121.38;102.22;58.42;56.43
-3;Vinicius Barbarioli;Triple Seven - Queen 2;507.0;146.56;122.43;92.85;80.47;35.19;29.5
-4;Bernardo Margotto;Advance - Sigma 10;470.8;123.0;103.34;101.5;94.21;48.75;0
-5;Filipe Perini ;Ozone - Delta 3 ;442.1;124.36;103.24;92.8;53.48;39.78;28.42
-6;Ney de Oliveira;Ozone - Rush 5;364.0;101.44;82.14;62.22;41.81;41.24;35.16
-7;Daniel Bernardino;Sol - Sycross 2;360.4;116.4;86.69;79.19;61.12;9.82;7.2
-8;Bruno Mazzei;Phi - Allegro Light;332.2;100.69;55.4;52.81;49.98;37.17;36.1
-9;Leandro Schmidt;Ozone - Delta 3 ;321.7;102.64;78.47;65.23;49.04;18.52;7.79
-10;Vantuil Mataveli;Ozone - Delta 4;320.0;124.67;104.09;91.24;0;0;0
-11;Andre Stavrakas;Flow - Fusion;295.3;125.41;54.76;40.48;36.14;20.82;17.68
-12;Marjo Lemos;Sol - LT 2;266.3;105.91;73.27;55.38;31.72;0;0
-13;Francisco Reis;Niviuk - Ikuma;259.2;72.11;67.56;47.42;26.11;25.97;20.07
-14;Mateus Haase;Niviuk - Ikuma;223.4;72.53;59.71;25.27;23.2;22.18;20.52
-15;Higor Penitenti ;Ozone - Rush 5;161.5;68.96;22.16;19.85;18.9;16.86;14.79
-16;Helio Lima;Skywalk - Chili 4;143.4;58.71;40.87;20.07;12.39;11.36;0
-17;Valentin Tesch ;Sol - Sycross 2;129.2;31.62;29.37;22.34;16.26;15.41;14.23
-18;Aloisio de Almeida ;Sol - Sycross;109.5;109.5;0;0;0;0;0
-19;Luiz Furbino;Sol - Sycross 2;96.3;18.78;17.2;15.65;15.37;15.24;14.1
-20;Claudinei Inocente ;Sol - Sycross 2;63.5;17.34;14.91;10.26;7.33;6.89;6.77
-21;Daniel Trevezani ;Gin - Bonanza 2 ;43.1;43.1;0;0;0;0;0
-22;Helicei Freitas;Up - Ascent 2;41.0;14.25;11.32;8.04;2.64;2.49;2.3
-23;Jefferson Felicio ;BGD - Base 2;34.7;8.95;8.69;8.44;6.17;2.44;0
-24;Hemerson Souza;Swing - Nyos 2;30.8;9.91;9.24;7.88;3.81;0;0
-25;Luiz Felipe Peruchi;Sol - Atmus 2;15.5;6.48;5.24;3.74;0;0;0
-26;Petterson Mareto;Ozone - Delta 2;0;0;0;0;0;0;0
+1;Daniel Bernardino;Swing - Libra;736.8;212.17;181.21;116.4;86.69;79.19;61.12
+2;Rubens Schunck;Advance - Sigma 11;688.7;147.64;124.24;121.38;109.42;102.22;83.83
+3;Thiago Azevedo;BGD - Cure 2;678.0;132.01;123.54;119.46;104.67;102.78;95.56
+4;Bernardo Margotto;Advance - Sigma 10;585.1;123.0;103.34;101.5;94.21;85.32;77.72
+5;Vinicius Barbarioli;Triple Seven - Queen 2;573.5;146.56;122.43;92.85;81.33;80.47;49.83
+6;Filipe Perini ;Ozone - Delta 3 ;549.1;124.36;103.24;97.12;92.8;78.12;53.48
+7;Vantuil Mataveli;Ozone - Delta 4;494.0;124.67;104.09;91.24;75.98;50.14;47.89
+8;Bruno Mazzei;Phi - Allegro Light;456.7;100.69;85.86;85.18;76.78;55.4;52.81
+9;Aloisio de Almeida ;Ozone - Rush 6;447.9;109.5;103.52;74.62;64.87;50.86;44.57
+10;Ney de Oliveira;Ozone - Rush 5;389.0;101.44;82.14;62.22;54.09;47.3;41.81
+11;Andre Stavrakas;Flow - Fusion;371.9;125.41;85.73;54.76;40.48;36.14;29.38
+12;Mateus Haase;Niviuk - Ikuma;359.4;75.96;72.53;59.71;54.92;53.39;42.85
+13;Petterson Mareto;Ozone - Delta 2;340.5;70.7;70.01;57.05;55.65;47.29;39.77
+14;Marjo Lemos;Sol - LT 2;335.9;105.91;73.27;55.38;39.88;31.72;29.72
+15;Leandro Schmidt;Ozone - Delta 3 ;321.7;102.64;78.47;65.23;49.04;18.52;7.79
+16;Hemerson Souza;Swing - Nyos 2;266.0;59.18;48.75;48.74;40.71;38.12;30.53
+17;Higor Penitenti ;Ozone - Rush 5;218.9;68.96;48.1;40.94;22.16;19.85;18.9
+18;Adilio Capaz;Gradient - Aspen 4;207.6;53.1;45.43;31.75;30.38;24.56;22.42
+19;Helio Lima;Skywalk - Chili 4;203.8;58.71;40.87;34.54;29.49;20.13;20.07
+20;Valentin Tesch ;Sol - Sycross 2;132.8;29.37;22.34;22.06;21.97;18.6;18.43
+21;Francisco Reis;Niviuk - Artik 6;127.6;31.73;21.21;21.1;20.88;18.54;14.1
+22;Claudinei Inocente ;Sol - Sycross 2;116.3;33.68;19.07;17.34;15.76;15.57;14.91
+23;Luiz Furbino;Sol - Sycross 2;99.3;20.81;17.2;15.73;15.65;15.24;14.71
+24;Luiz Felipe Peruchi;Sol - Atmus 2;73.3;18.58;14.68;14.03;9.3;8.68;8.02
+25;Jefferson Felicio ;BGD - Base 2;69.0;15.41;15.39;11.97;8.95;8.69;8.6
+26;Helicei Freitas;Up - Ascent 2;51.4;14.25;11.32;8.04;7.87;6.68;3.22
+27;Daniel Trevezani ;Gin - Bonanza 2 ;35.1;35.12;0;0;0;0;0

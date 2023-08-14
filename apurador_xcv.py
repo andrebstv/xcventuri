@@ -102,9 +102,9 @@ voos_validos.reset_index(drop=True)
 # Aqui insere-se os voos de cada piloto, que sejam inéditos, no banco de dados.
 for index, row in voos_validos.iterrows():
     query = f'''
-    INSERT OR IGNORE INTO tabela_voos (ID_voo, Data, kmOLC, Pontuacao_OLC, local_voo, duracao, Piloto, Categoria, Vela, Data_Coleta, Voo_data_valido, Voo_rampa_valida, Espaco_aereo)
+    INSERT OR IGNORE INTO tabela_voos (ID_voo, Data, kmOLC, Pontuacao_OLC, local_voo, duracao, Piloto, Categoria, Vela, Data_Coleta, Voo_data_valido, Voo_rampa_valida, Espaco_aereo, manual)
     VALUES ({row['ID_voo']}, '{row['Data']}', {row['kmOLC']}, {row['Pontuacao_OLC']}, '{row['local_voo']}', '{row['duracao']}', 
-    '{row['Piloto']}', '{row['Categoria']}', '{row['Vela']}', '{row['Data_Coleta']}', {row['Voo_data_valido']}, {row['Voo_rampa_valida']},{row['Espaco_aereo']})
+    '{row['Piloto']}', '{row['Categoria']}', '{row['Vela']}', '{row['Data_Coleta']}', {row['Voo_data_valido']}, {row['Voo_rampa_valida']},{row['Espaco_aereo']}, False)
     '''
     conn.execute(query)
 conn.commit()
@@ -135,7 +135,7 @@ def apura(categoria):
             index_da_vez = len(df_apuracao)
             df_apuracao.loc[index_da_vez, 'PILOTO'] = df_pilotos_ids.loc[j].at['Nome']
             df_apuracao.loc[index_da_vez, 'PARAPENTE'] = df_pilotos_ids.loc[j].at['Vela']
-            df_apuracao.loc[index_da_vez, 'Pontuacao OLC'] = round(df_do_banco.head(6).sum().at['Pontuacao_OLC'],1)
+            df_apuracao.loc[index_da_vez, 'Pontuacao OLC'] = round(df_do_banco.head(6).sum().at['Pontuacao_OLC'],2)
                 #coloca os demais voos na lista. Sempre checando se ultrapassou.
             for i in range(6):
                 dfx = df_do_banco.head(6)
